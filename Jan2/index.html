@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>Test </title>
+    <style>
+        
+    </style>
+</head>
+
+<body style="margin: auto; background-color: rgb(241, 248, 223);">
+   <h1 style="text-align: center; margin-top: 50px;" ><span style="background-color: aquamarine;"> Geekster  Feedback form</h1> </span> 
+<div style="margin-left: 42%; ">
+    
+    
+    <form id="form1" >
+        <p> First Name: <input type="text" name="f_name" placeholder="First Name"></p>
+        <p>Last Name: <input type="text" name="l_name" placeholder="Last Name"></p>
+
+        <p>Email:* &nbsp; &nbsp; &nbsp; <input type="email" name="email" placeholder="Enter you email id" required></p>
+
+        <p>Password: &nbsp; <input type="password" name="passwd" minlength="6"></p>
+
+        <p>Gender:&nbsp; &nbsp; &nbsp;<input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Female"> Female
+        </p>
+
+        <p>Assignment Done: </p>
+        <input type="checkbox" name="checkbox1" value="Day1"> Day 1
+        <input type="checkbox" name="checkbox2" value="Day 2"> Day 2
+
+        <input type="checkbox" name="checkbox3" value="Day 3"> Day 3
+         
+        <p>Rate your Class:</p>
+            <input type="radio" name="rating1" >😊Good
+            <input type="radio" name="rating2" >😃Very Good
+            <input type="radio" name="rating3" >😍Excellent
+            <br>
+            
+            <p>Any other Feedback:</p>
+            <textarea name="textarea1"  cols="30" rows="5"></textarea>
+        
+        
+        <br>
+         <br>
+        
+
+        <button id="submit" style="margin-left: 10%;">Submit</button>
+
+    </form>
+
+</div>
+
+<script>
+    function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const data = new FormData(event.target);
+  
+  const formJSON = Object.fromEntries(data.entries());
+
+  // for multi-selects, we need special handling
+  formJSON.snacks = data.getAll('form1');
+  
+  const results = document.querySelector('.results pre');
+  results.innerText = JSON.stringify(formJSON, null, 2);
+}
+
+const form = document.querySelector('.index');
+form.addEventListener('Submit', handleFormSubmit);
+
+</script>
+
+</body>
+
+</html>
